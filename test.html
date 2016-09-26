@@ -20,20 +20,34 @@
     <p id="theExcitingParagraph2"></p>
     <p id="theThirdParagraph"></p>
     <script>
+    var root = document.documentElement;
+    // querySelector is the same as .getElementsByTagName("h1")[0]
     var theHeader = document.querySelector("h1");
-    //document.getElementById("theTitleTag").innerHTML = theHeader.textContent;
+    // document.getElementById("theTitleTag").innerHTML = theHeader.textContent;
+
+    // getElementById requires an id to be added to the specified element in the HTML
     var theFirstP = document.getElementById("excitingText");
     //document.getElementById("theHTMLTag").innerHTML = theFirstP.textContent;
-    var theSecondP = document.getElementsByTagName("p")[1];
+
+    var theSecondP = document.getElementsByTagName("p")[0];
     //document.getElementById("theExcitingParagraph").innerHTML = theSecondP.textContent;
-    // <title> node
+
+    var root = document.documentElement;
+    //document.getElementById("theThirdParagraph").innerHTML = root.nodeName;
+
     var theBodyTag = document.querySelector("body");
-    var index = [].indexOf.call(theBodyTag.children, theSecondP);
-    document.getElementById("theTitleTag").innerHTML = index;
+    document.getElementById("theExcitingParagraph").innerHTML = theBodyTag.children[0].textContent;
 
-
-
+    // Since childNodes do not have an indexOf method, need to use array method
+    var current = theHeader;
+    var index = Array.prototype.indexOf.call(theBodyTag.children, current);
+    var path = [index];
+    // while(theHeader !== root){
+    //   path.unshift(index);
+    //   current = current.parentNode;
+    // }
+    document.getElementById("theTitleTag").innerHTML = path.toString();
+    //document.getElementById("theTitleTag").innerHTML = index;
     </script>
-
   </body>
 </html>
